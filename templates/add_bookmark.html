@@ -1,0 +1,57 @@
+{% extends "layout.html" %}
+
+{% block title %}
+    Add
+{% endblock %}
+
+{% block main %}
+    <form action="/add_bookmark" method="post">
+        <h5 class="">Add a New Bookmark</h5>
+        <div class="mb-3 row">
+
+            <label for="name" class="col-sm-2 col-form-label">Name</label>
+            <input type="text" autocomplete="off" class="form-control w-auto" id="name" name="name" placeholder="Eg. Google">
+        </div>
+
+        <div class="mb-3 row">
+            <label for="URL" class="col-sm-2 col-form-label">URL</label>
+            <input type="text" autocomplete="off" class="form-control w-auto" id="URL" name="url" placeholder="Eg. www.google.com">
+        </div>
+
+        <div class="mb-3 row">
+            <label for="folder" class="col-sm-2 col-form-label">Choose Folder</label>
+            <select id="folder" class="form-control w-auto" name="folder">
+                <option value="None" selected>None</option>
+                <option value="new_folder">New Folder</option>
+
+                {% for folder in folders %}
+                    <option value="{{ folder.name }}">{{ folder.name }}</option>
+                {% endfor %}
+
+            </select>
+        </div>
+
+        <div class="mb-3 row" id="folder_name_div" style="display: none">
+            <label for="folder_name" class="col-sm-2 col-form-label" >New Folder</label>
+            <input name="new_folder" type="text" id="folder_name" class="form-control w-auto" placeholder="Eg. Self Study">
+        </div>
+        <button class="btn btn-secondary" type="submit">Add</button>
+
+    </form>
+
+    <script>
+        document.addEventListener("DOMContentLoaded", function() {
+            const folderSelect = document.querySelector("#folder");
+            const folderNameInput = document.querySelector('#folder_name_div');
+
+            folderSelect.addEventListener("change", function() {
+                if (folderSelect.value === "new_folder") {
+                    folderNameInput.style.display = "flex";
+                } else {
+                    folderNameInput.style.display = "none";
+                }
+            });
+        });
+    </script>
+
+{% endblock %}

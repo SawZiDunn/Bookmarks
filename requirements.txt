@@ -1,0 +1,6 @@
+flask
+cs50
+requests
+werkzeug
+pytz
+DateTime
