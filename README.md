@@ -22,7 +22,7 @@ No matter how long the url you added it, only the base link will be displayed.
 For instance, https://www.google.com will be displayed as www.google.com.
 This allows you to know which website the link belongs to.
 
-You can edit or delete any bookmarks or folders by simply clicking the buttons on the left side.
+You can edit or delete any bookmarks or folders by simply clicking the buttons on the right side.
 You will be able to change the name and url for bookmarks, but only the name for folders.
 If you delete a folder, all the bookmarks contained in that folder will also be deleted.
 
@@ -32,7 +32,6 @@ You cannot register again if the username is already registered.
 
 ### Objective:
 
-Of course there is already a Browser Bookmark. Why do we even need this?
 With this web application, you can save your favourite websites in folders by creating an account.
 The data will be stored in a database, and you can retrieve them anytime you want.
 It is like your own personal place from where you can go to any website you like just by one click.

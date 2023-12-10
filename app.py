@@ -53,12 +53,6 @@ def folder_index():
     return render_template("folders.html", folders=folders)
 
 
-@app.route("/folders")
-@login_required
-def my_folder():
-    pass
-
-
 @app.route("/login", methods=["GET", "POST"])
 def login():
     """Log user in"""
