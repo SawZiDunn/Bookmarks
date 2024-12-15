@@ -1,45 +1,40 @@
 # Bookmarks
 
-#### Video Demo: <https://youtu.be/9I35fvPIIZw?si=C1WsBtnsjEKGWKeS>
+### Video Demo: <https://youtu.be/9I35fvPIIZw?si=C1WsBtnsjEKGWKeS>
 
-#### Description:
+### Description:
 
-"Bookmarks" is a web application where you can save any links into separate folders in an organized structure.
-It is developed using Flask Web Framework from Python, SQLite Database, HTML, CSS, and Bootstrap Framework.
-You have to create an account first to log in, after which you can add, edit, and delete the folders and bookmarks.
+Bookmarks is a Flask-based web application for saving and organizing links into folders. Built with Flask, SQLite, HTML, CSS, and Bootstrap, it offers the following features:
 
-If there is no folder or bookmark, you will see a message saying "No Bookmarks".
-
-When you try to add a new bookmark, you can choose to add it in a new folder, or in an existing folder.
-All the existing folder names will be there as options.
-Or you can simply choose "None", which means no folder.
-
-Add an empty new folder by clicking "Add Folder" button as well.
-All bookmarks and folders will be displayed in descending order according to their timestamp.
-
-If you click the folder name in the bookmark row, you will see just all the bookmarks in that single folder.
-Bookmarks with the folder name as "None" will not be shown in "My Folders".
-
-No matter how long the url you added it, only the base link will be displayed.
-For instance, https://www.google.com will be displayed as www.google.com.
-This allows you to know which website the link belongs to.
-
-You can edit or delete any bookmarks or folders by simply clicking the buttons on the right side.
-You will be able to change the name and url for bookmarks, but only the name for folders.
-If you delete a folder, all the bookmarks contained in that folder will also be deleted.
-
-The application handles any possible user errors such as empty username or password as well as
-incorrect confirmation password.
-You cannot register again if the username is already registered.
+-   User Authentication: Create an account to log in.
+-   Organized Structure: Add, edit, and delete folders and bookmarks.
+-   Folder Management:
+    Save bookmarks in new or existing folders, or leave them ungrouped.
+    Empty folders can be added via the "Add Folder" button.
+-   Sorting & Display:
+    Bookmarks and folders are displayed in descending order of creation.
+    Clicking a folder name filters its bookmarks.
+    Ungrouped bookmarks ("None") are excluded from "My Folders."
+-   Clean Link Display: URLs are displayed as their base links (e.g., https://www.google.com → www.google.com).
+-   Editing & Deletion:
+    Update bookmark names/URLs and folder names.
+    Deleting a folder removes its bookmarks.
+-   Error Handling: Prevents user errors like empty fields, mismatched passwords, or duplicate usernames.
 
 ### Objective:
 
-With this web application, you can save your favourite websites in folders by creating an account.
-The data will be stored in a database, and you can retrieve them anytime you want.
-It is like your own personal place from where you can go to any website you like just by one click.
+This web application lets you save your favorite websites in organized folders by creating an account. Your data is securely stored in a database, allowing you to access and visit your saved websites with a single click anytime.
+
+### Screenshots:
+
+![1](demo_pictures/1.png)
+![2](demo_pictures/2.png)
+![2](demo_pictures/3.png)
+![4](demo_pictures/4.png)
 
 ### Database Schemas
 
+```sql
 CREATE TABLE bookmarks (
 id INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL,
 name TEXT NOT NULL,
@@ -60,13 +55,26 @@ FOREIGN KEY (user_id) REFERENCES users(id)
 
 CREATE TABLE users (id INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, username TEXT NOT NULL, hash TEXT NOT NULL);
 CREATE UNIQUE INDEX username ON users (username);
+```
 
 ## Installation
 
-Install required libraries using
+1. Clone the repository:
 
 ```
-pip install <libraryName>
+$ git clone https://github.com/SawZiDunn/Bookmarks.git
+```
+
+2. Navigate to the project directory:
+
+```
+$ cd Bookmarks
+```
+
+3. Install the required libraries:
+
+```
+$ pip install -r requirements.txt
 ```
 
 ### Libraries
@@ -80,20 +88,22 @@ pip install <libraryName>
 
 ## Usage
 
-Download the project and run the program either by
+To run the application, navigate to the project directory and use one of the following commands:
+
+1. With Flask:
 
 ```
 $ flask run
 ```
 
-or
+2. Or with Python directly:
 
 ```
 $ python app.py
 ```
 
-in the project directory.
+Both commands will start the application locally.
 
 ## Contribution
 
-I do expect any suggestions for the improvement of my web application.
+I welcome suggestions and contributions to improve this web application.
