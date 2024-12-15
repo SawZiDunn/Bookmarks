@@ -5,11 +5,17 @@ from werkzeug.security import check_password_hash, generate_password_hash
 from helpers import error, login_required, shorten_url
 from datetime import datetime
 import pytz
+from dotenv import load_dotenv
+import os
+
+# Load environment variables from the .env file
+load_dotenv()
 
 app = Flask(__name__)
 
 app.jinja_env.filters["shorten_url"] = shorten_url
-
+# accessing environment variable
+app.config["PORT"] = os.getenv("PORT") or 5000
 # Configure session to use filesystem (instead of signed cookies)
 app.config["SESSION_PERMANENT"] = False
 app.config["SESSION_TYPE"] = "filesystem"
@@ -215,4 +221,4 @@ def delete():
 
 
 if __name__ == '__main__':
-    app.run(debug=True)
+    app.run(debug=True, port=app.config["PORT"])
