@@ -1,5 +1,7 @@
 # Bookmarks
-#### Video Demo:  <https://youtu.be/9I35fvPIIZw?si=C1WsBtnsjEKGWKeS>
+
+#### Video Demo: <https://youtu.be/9I35fvPIIZw?si=C1WsBtnsjEKGWKeS>
+
 #### Description:
 
 "Bookmarks" is a web application where you can save any links into separate folders in an organized structure.
@@ -36,8 +38,31 @@ With this web application, you can save your favourite websites in folders by cr
 The data will be stored in a database, and you can retrieve them anytime you want.
 It is like your own personal place from where you can go to any website you like just by one click.
 
+### Database Schemas
+
+CREATE TABLE bookmarks (
+id INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL,
+name TEXT NOT NULL,
+url TEXT NOT NULL,
+folder_id INTEGER DEFAULT NULL,
+user_id INTEGER NOT NULL,
+time DATETIME NOT NULL,
+FOREIGN KEY (folder_id) REFERENCES folders(id),
+FOREIGN KEY (user_id) REFERENCES users(id)
+);
+
+CREATE TABLE folders ( id INTEGER PRIMARY KEY AUTOINCREMENT,
+user_id INTEGER NOT NULL,
+name TEXT NOT NULL,
+time DATETIME NOT NULL,
+FOREIGN KEY (user_id) REFERENCES users(id)
+);
+
+CREATE TABLE users (id INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, username TEXT NOT NULL, hash TEXT NOT NULL);
+CREATE UNIQUE INDEX username ON users (username);
 
 ## Installation
+
 Install required libraries using
 
 ```
@@ -53,8 +78,8 @@ pip install <libraryName>
 5. pytz
 6. DateTime
 
+## Usage
 
-## Usage 
 Download the project and run the program either by
 
 ```
@@ -66,10 +91,9 @@ or
 ```
 $ python app.py
 ```
+
 in the project directory.
 
 ## Contribution
+
 I do expect any suggestions for the improvement of my web application.
-
-
-    
